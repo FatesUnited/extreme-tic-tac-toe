@@ -1,5 +1,5 @@
-# Extreme Tic Tac Toe Project Plan
-![extreme tic tac toe](/images/xttt.png)
+# Ultimate Tic Tac Toe Project Plan
+![ultimate tic tac toe](/images/uttt.png)
 ## User Stories
 
 - As a player, I want an option to see instructions on how to play at all times
