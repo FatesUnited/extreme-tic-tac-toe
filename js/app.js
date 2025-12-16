@@ -119,12 +119,21 @@ function handleClick(event) {
             updateBoard(sqNum);
             if(checkForWinner(board)) {
                 mainBoard[boardNum] = turn;
+                if (turn === 'X') {
+                    event.target.parentElement.classList.add("bWinnerX");
+                }
+                else if (turn === 'O') {
+                    event.target.parentElement.classList.add("bWinnerO");
+                }
+                console.log(event.target.parentElement) // event.target.parentElement
             }
             if(checkForWinner(mainBoard)) {
                 winner = true;
             }
             if(checkForTie(board)) {
                 mainBoard[boardNum] = 'T';
+                event.target.parentElement.classList.add("bWinnerT");
+                console.log(event.target.parentElement) // event.target.parentElement
             }
             if(checkForTie(mainBoard)) {
                 tie = true;

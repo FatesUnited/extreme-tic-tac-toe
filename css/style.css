@@ -28,3 +28,15 @@ body {
   font-size: 44px;
   text-align: center;
 }
+
+.bWinnerX {
+  background-color: red;
+}
+
+.bWinnerO {
+  background-color: blue;
+}
+
+.bWinnerT {
+  background-color: yellow;
+}
