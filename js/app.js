@@ -125,6 +125,12 @@ function handleClick(event) {
             if(checkForWinner(mainBoard)) {
                 winner = true;
             }
+            if(checkForTie(board)) {
+                mainBoard[boardNum] = 'T';
+            }
+            if(checkForTie(mainBoard)) {
+                tie = true;
+            }
             switchPlayerTurn();
         }
     } else {
@@ -134,9 +140,9 @@ function handleClick(event) {
     // console.log(boardNum);
     // console.log(squareNum);
     // console.log(sqNum);
-    // console.log(board);
+    console.log(board);
 
-    // console.log(mainBoard);
+    console.log(mainBoard);
     
     
     
@@ -199,8 +205,8 @@ function checkForWinner(board) {
     }
 }
 
-function checkForTie() {
-    let hasSpace = false;
+function checkForTie(board) {
+    // let hasSpace = false;
     
     if(winner === true) {
         return;
@@ -208,17 +214,21 @@ function checkForTie() {
 
     for (let i = 0; i < board.length; i++) {
         if(board[i] === '') { 
-            hasSpace = true;
+            // hasSpace = true;
+            return false;
         }
     }
 
-    if(hasSpace === true) { 
-        tie = false;
-        // console.log(`Tie! ${tie}`);
-    } else {
-        tie = true;
-        // console.log(`Tie! ${tie}`);
-    }    
+    return true;
+    // if(hasSpace) { 
+    //     return false;
+    //     // tie = false;
+    //     // console.log(`Tie! ${tie}`);
+    // } else {
+    //     return true;
+    //     // tie = true;
+    //     // console.log(`Tie! ${tie}`);
+    // }    
 }
 
 function switchPlayerTurn() {
