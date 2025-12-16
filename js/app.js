@@ -25,6 +25,7 @@ let board8 = [];
 let turn;
 let winner;
 let tie;
+let bPos;
 
 /*------------------------ Cached Element References ------------------------*/
 const boardEls = document.querySelectorAll('.board');
@@ -49,6 +50,7 @@ function init() {
     turn = 'X';
     winner = false;
     tie = false;
+    bPos = -1;
 
     squareEls.forEach(sq => {
         sq.textContent = '';
@@ -101,12 +103,15 @@ function handleClick(event) {
         return;
     }
     
-    let bPos = mainBoard.findIndex(str => {
+    bPos = mainBoard.findIndex(str => {
         return str === 'A'
     })
 
     if (bPos === -1 || bPos === boardNum) {
         // console.log("valid")
+        if (checkForWinner(board)) {
+            return;
+        }
 
         if (board) {
             if(bPos >= 0 && bPos <= 8) {
@@ -114,6 +119,12 @@ function handleClick(event) {
             }
             placePiece(board, squareNum);
             updateBoard(sqNum);
+            if(checkForWinner(board)) {
+                mainBoard[boardNum] = turn;
+            }
+            if(checkForWinner(mainBoard)) {
+                winner = true;
+            }
             switchPlayerTurn();
         }
     } else {
@@ -128,7 +139,7 @@ function handleClick(event) {
     // console.log(mainBoard);
     
     
-    // checkForWinner();
+    
     // checkForTie();
 
     render();
@@ -157,34 +168,34 @@ function determineBoard(board) {
 }
 
 function placePiece(board, index) {    
+    
     board[index] = turn;
+    
     // console.log(board);
     if(mainBoard[index] !== 'X' && mainBoard[index] !== 'O' && mainBoard[index] !== 'T') {
         mainBoard[index] = 'A';
         // console.log(mainBoard);
     }
-    
+    else {
+        bPos = -1;
+    }
 }
 
-function checkForWinner() {
+function checkForWinner(board) {
     for (let i = 0; i < winningCombos.length; i++) {
-        // for (let j = 0; j < winningCombos[i].length; j++) {
-
-            // if(j === 0) {
-                if(board[winningCombos[i][0]] === '') {
-                    // continue;
+        if(board[winningCombos[i][0]] === '') {
+            // Do Nothing
+        }
+        else if (board[winningCombos[i][0]] === 'X' || board[winningCombos[i][0]] === 'O') {
+            if (board[winningCombos[i][0]] === board[winningCombos[i][1]]) {
+                if (board[winningCombos[i][0]] === board[winningCombos[i][2]]) {
+                    return true;
+                    // winner = true;
+                    // console.log(`Winner! ${winner}`);
                 }
-                else if (board[winningCombos[i][0]] === 'X' || board[winningCombos[i][0]] === 'O') {
-                    if (board[winningCombos[i][0]] === board[winningCombos[i][1]]) {
-                        if (board[winningCombos[i][0]] === board[winningCombos[i][2]]) {
-                            winner = true;
-                            // console.log(`Winner! ${winner}`);
-                        }
-                    }
+            }
 
-                }
-            // }   
-        // }
+        }
     }
 }
 
