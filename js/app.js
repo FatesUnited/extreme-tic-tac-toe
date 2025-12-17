@@ -56,12 +56,27 @@ function init() {
         sq.textContent = '';
     })
 
+    let xBoards = document.querySelectorAll(".bWinnerX");
+    let oBoards = document.querySelectorAll(".bWinnerO");
+    let tBoards = document.querySelectorAll(".bWinnerT");
+
+    xBoards.forEach(a => {
+        a.classList.remove("bWinnerX")
+    })
+    oBoards.forEach(a => {
+        a.classList.remove("bWinnerO")
+    })
+    tBoards.forEach(a => {
+        a.classList.remove("bWinnerT")
+    })
+
     render();
 }
 
 function render() {
     updateBoard();
     updateMessage();
+    // highlightMove();
 }
 
 function updateBoard(eventId) {
@@ -84,6 +99,17 @@ function updateMessage() {
         }
     } else {
         messageEl.innerText = `${turn} is the winner!`;
+    }
+}
+
+function highlightMove() {
+    if(bPos === -1) {
+        console.log('all');
+    }
+    else {
+        console.log(mainBoard[bPos]);
+        console.log(mainBoard)
+        console.log(bPos)
     }
 }
 
@@ -125,7 +151,6 @@ function handleClick(event) {
                 else if (turn === 'O') {
                     event.target.parentElement.classList.add("bWinnerO");
                 }
-                console.log(event.target.parentElement) // event.target.parentElement
             }
             if(checkForWinner(mainBoard)) {
                 winner = true;
@@ -133,7 +158,6 @@ function handleClick(event) {
             if(checkForTie(board)) {
                 mainBoard[boardNum] = 'T';
                 event.target.parentElement.classList.add("bWinnerT");
-                console.log(event.target.parentElement) // event.target.parentElement
             }
             if(checkForTie(mainBoard)) {
                 tie = true;
@@ -209,7 +233,7 @@ function checkForTie(board) {
     }
 
     for (let i = 0; i < board.length; i++) {
-        if(board[i] === '') { 
+        if(board[i] === '' || board[i] === 'A') { 
             return false;
         }
     }

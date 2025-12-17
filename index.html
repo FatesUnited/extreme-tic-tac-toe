@@ -9,109 +9,57 @@
 </head>
 <body>
   <h1>Ultimate Tic-Tac-Toe</h1>
-  <button id="reset">Reset!</button>
-  <h2 id="message">Message</h2>
-  <hr>
-  <section id="main-board">
-    <section class="board" id="board0">
-      <div class="sqr" id="b0e0"></div>
-      <div class="sqr" id="b0e1"></div>
-      <div class="sqr" id="b0e2"></div>
-      <div class="sqr" id="b0e3"></div>
-      <div class="sqr" id="b0e4"></div>
-      <div class="sqr" id="b0e5"></div>
-      <div class="sqr" id="b0e6"></div>
-      <div class="sqr" id="b0e7"></div>
-      <div class="sqr" id="b0e8"></div>
-    </section>
-    <section class="board" id="board1">
-      <div class="sqr" id="b1e0"></div>
-      <div class="sqr" id="b1e1"></div>
-      <div class="sqr" id="b1e2"></div>
-      <div class="sqr" id="b1e3"></div>
-      <div class="sqr" id="b1e4"></div>
-      <div class="sqr" id="b1e5"></div>
-      <div class="sqr" id="b1e6"></div>
-      <div class="sqr" id="b1e7"></div>
-      <div class="sqr" id="b1e8"></div>
-    </section>
-    <section class="board" id="board2">
-      <div class="sqr" id="b2e0"></div>
-      <div class="sqr" id="b2e1"></div>
-      <div class="sqr" id="b2e2"></div>
-      <div class="sqr" id="b2e3"></div>
-      <div class="sqr" id="b2e4"></div>
-      <div class="sqr" id="b2e5"></div>
-      <div class="sqr" id="b2e6"></div>
-      <div class="sqr" id="b2e7"></div>
-      <div class="sqr" id="b2e8"></div>
-    </section>
-    <section class="board" id="board3">
-      <div class="sqr" id="b3e0"></div>
-      <div class="sqr" id="b3e1"></div>
-      <div class="sqr" id="b3e2"></div>
-      <div class="sqr" id="b3e3"></div>
-      <div class="sqr" id="b3e4"></div>
-      <div class="sqr" id="b3e5"></div>
-      <div class="sqr" id="b3e6"></div>
-      <div class="sqr" id="b3e7"></div>
-      <div class="sqr" id="b3e8"></div>
-    </section>
-    <section class="board" id="board4">
-      <div class="sqr" id="b4e0"></div>
-      <div class="sqr" id="b4e1"></div>
-      <div class="sqr" id="b4e2"></div>
-      <div class="sqr" id="b4e3"></div>
-      <div class="sqr" id="b4e4"></div>
-      <div class="sqr" id="b4e5"></div>
-      <div class="sqr" id="b4e6"></div>
-      <div class="sqr" id="b4e7"></div>
-      <div class="sqr" id="b4e8"></div>
-    </section>
-    <section class="board" id="board5">
-      <div class="sqr" id="b5e0"></div>
-      <div class="sqr" id="b5e1"></div>
-      <div class="sqr" id="b5e2"></div>
-      <div class="sqr" id="b5e3"></div>
-      <div class="sqr" id="b5e4"></div>
-      <div class="sqr" id="b5e5"></div>
-      <div class="sqr" id="b5e6"></div>
-      <div class="sqr" id="b5e7"></div>
-      <div class="sqr" id="b5e8"></div>
-    </section>
-    <section class="board" id="board6">
-      <div class="sqr" id="b6e0"></div>
-      <div class="sqr" id="b6e1"></div>
-      <div class="sqr" id="b6e2"></div>
-      <div class="sqr" id="b6e3"></div>
-      <div class="sqr" id="b6e4"></div>
-      <div class="sqr" id="b6e5"></div>
-      <div class="sqr" id="b6e6"></div>
-      <div class="sqr" id="b6e7"></div>
-      <div class="sqr" id="b6e8"></div>
-    </section>
-    <section class="board" id="board7">
-      <div class="sqr" id="b7e0"></div>
-      <div class="sqr" id="b7e1"></div>
-      <div class="sqr" id="b7e2"></div>
-      <div class="sqr" id="b7e3"></div>
-      <div class="sqr" id="b7e4"></div>
-      <div class="sqr" id="b7e5"></div>
-      <div class="sqr" id="b7e6"></div>
-      <div class="sqr" id="b7e7"></div>
-      <div class="sqr" id="b7e8"></div>
-    </section>
-    <section class="board" id="board8">
-      <div class="sqr" id="b8e0"></div>
-      <div class="sqr" id="b8e1"></div>
-      <div class="sqr" id="b8e2"></div>
-      <div class="sqr" id="b8e3"></div>
-      <div class="sqr" id="b8e4"></div>
-      <div class="sqr" id="b8e5"></div>
-      <div class="sqr" id="b8e6"></div>
-      <div class="sqr" id="b8e7"></div>
-      <div class="sqr" id="b8e8"></div>
-    </section>
-  </section>
+  <button onclick="window.location.href='./uttt.html';">Let's Play!</button>
+  <h3>How to Play</h3>
+  <div>
+    Ultimate Tic-Tac-Toe is a strategy game played on a 3×3 grid of smaller Tic-Tac-Toe boards.
+    <br>
+    Two players take turns placing X and O.
+    <br>
+    The objective is to win the game by winning three small boards in a row (horizontally, vertically, or diagonally) on the big board.
+  </div>
+  <h3>Game Setup</h3>
+  <div>
+    The game board consists of 9 small Tic-Tac-Toe boards arranged in a 3×3 grid.
+    <br>
+    Each small board contains 9 cells.
+    <br>
+    Player X always goes first (Changing this is WIP).
+  </div>
+  <h3>Taking a Turn</h3>
+  <div>
+    On your turn, click an empty cell in a valid small board.
+    <br>
+    Your mark (X or O) is placed in that cell.
+    <br>
+    The position of the cell you chose determines which small board the next player must play in.
+    <br>
+    <em>Example:
+
+    If you play in the top-right cell of a small board, your opponent must play in the top-right small board next.
+    </em>
+  </div>
+  <h3>Active Board Rule</h3>
+  <div>
+    If the required small board is still playable, the next player must play there.
+    <br>
+    If the required small board has already been won or tied, the next player may play in any available small board.
+    <br>
+    The active small board is visually highlighted. (Still WIP)
+  </div>
+  <h3>Ties</h3>
+  <div>
+    If all cells in a small board are filled and no one has won it, that board is a tie.
+    <br>
+    Tied boards cannot be played in and do not count toward winning the big board.
+  </div>
+  <h3>Winning the Game</h3>
+  <div>
+    The big board is treated like a Tic-Tac-Toe board.
+    <br>
+    Win three small boards in a row to win the game.
+    <br>
+    If all small boards are completed and no player has three in a row, the game ends in a tie.
+  </div>
 </body>
 </html>

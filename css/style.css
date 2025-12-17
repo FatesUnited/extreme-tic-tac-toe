@@ -40,3 +40,9 @@ body {
 .bWinnerT {
   background-color: yellow;
 }
+
+#buttons-area {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
