@@ -26,6 +26,11 @@ let turn;
 let winner;
 let tie;
 let bPos;
+let xBoards;
+let oBoards;
+let tBoards;
+let lastMoves;
+
 
 /*------------------------ Cached Element References ------------------------*/
 const boardEls = document.querySelectorAll('.board');
@@ -56,9 +61,9 @@ function init() {
         sq.textContent = '';
     })
 
-    let xBoards = document.querySelectorAll(".bWinnerX");
-    let oBoards = document.querySelectorAll(".bWinnerO");
-    let tBoards = document.querySelectorAll(".bWinnerT");
+    xBoards = document.querySelectorAll(".bWinnerX");
+    oBoards = document.querySelectorAll(".bWinnerO");
+    tBoards = document.querySelectorAll(".bWinnerT");
 
     xBoards.forEach(a => {
         a.classList.remove("bWinnerX")
@@ -68,6 +73,12 @@ function init() {
     })
     tBoards.forEach(a => {
         a.classList.remove("bWinnerT")
+    })
+
+    lastMoves = document.querySelectorAll(".lastMove");
+
+    lastMoves.forEach(a => {
+        a.classList.remove("lastMove")
     })
 
     render();
@@ -80,12 +91,18 @@ function render() {
 }
 
 function updateBoard(eventId) {
+    lastMoves = document.querySelectorAll(".lastMove");
+
     let nodeEl = Array.from(squareEls).find(el => {
         return el.id === eventId;
     })
     
     if (nodeEl) {
+        lastMoves.forEach(a => {
+            a.classList.remove("lastMove")
+        })
         nodeEl.textContent = turn;
+        nodeEl.classList.add("lastMove");
     }
 }
 
@@ -104,7 +121,7 @@ function updateMessage() {
 
 function highlightMove() {
     squareEls.forEach(el => {
-        el.classList.remove("highlightMove")
+        el.classList.remove("highlightMove");
     })
 
     if(bPos === -1) {
