@@ -9,19 +9,22 @@ const winningCombos = [
     [0, 4, 8],
     [2, 4, 6]
 ];
+const boardX = ['X','','X','','X','','X','','X'];
+const boardO = ['O','O','O','O','','O','O','O','O'];
+const boardT = ['T','T','T','T','T','T','T','T','T'];
 
 
 /*---------------------------- Variables (state) ----------------------------*/
-let mainBoard = [];
-let board0 = [];
-let board1 = [];
-let board2 = [];
-let board3 = [];
-let board4 = [];
-let board5 = [];
-let board6 = [];
-let board7 = [];
-let board8 = [];
+let mainBoard;
+let board0;
+let board1;
+let board2;
+let board3;
+let board4;
+let board5;
+let board6;
+let board7;
+let board8;
 let turn;
 let winner;
 let tie;
@@ -30,6 +33,7 @@ let xBoards;
 let oBoards;
 let tBoards;
 let lastMoves;
+let matchCheck;
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -56,6 +60,7 @@ function init() {
     winner = false;
     tie = false;
     bPos = -1;
+    matchCheck = false;
 
     squareEls.forEach(sq => {
         sq.textContent = '';
@@ -104,6 +109,8 @@ function updateBoard(eventId) {
         nodeEl.textContent = turn;
         nodeEl.classList.add("lastMove");
     }
+
+    redrawBoard();
 }
 
 function updateMessage() {
@@ -124,7 +131,7 @@ function highlightMove() {
         el.classList.remove("highlightMove");
     })
 
-    if(bPos === -1) {
+    if(bPos === -1 || matchCheck) {
         squareEls.forEach(el => {
             if (el.textContent === '' && !el.parentNode.classList.contains('bWinnerX') && !el.parentNode.classList.contains('bWinnerO') && !el.parentNode.classList.contains('bWinnerT')) {
                 el.classList.add("highlightMove");
@@ -138,11 +145,29 @@ function highlightMove() {
             }
         })
     }
-
+    matchCheck = false;
     if (winner || tie) {
         squareEls.forEach(el => {
             el.classList.remove("highlightMove")
         })
+    }
+}
+
+function redrawBoard() {
+    let fullBoard = [];
+
+    board0.forEach(el => {fullBoard.push(el)})
+    board1.forEach(el => {fullBoard.push(el)})
+    board2.forEach(el => {fullBoard.push(el)})
+    board3.forEach(el => {fullBoard.push(el)})
+    board4.forEach(el => {fullBoard.push(el)})
+    board5.forEach(el => {fullBoard.push(el)})
+    board6.forEach(el => {fullBoard.push(el)})
+    board7.forEach(el => {fullBoard.push(el)})
+    board8.forEach(el => {fullBoard.push(el)})
+
+    for(let i = 0; i < squareEls.length; i++) {
+        squareEls[i].textContent = fullBoard[i];
     }
 }
 
@@ -173,6 +198,7 @@ function handleClick(event) {
             if(bPos >= 0 && bPos <= 8) {
                 mainBoard[bPos] = '';
             }
+            
 
             placePiece(board, squareNum);
             updateBoard(sqNum);
@@ -180,9 +206,18 @@ function handleClick(event) {
                 mainBoard[boardNum] = turn;
                 if (turn === 'X') {
                     event.target.parentElement.classList.add("bWinnerX");
+                    for(let i = 0; i < board.length; i++ ){
+                        board[i] = boardX[i];
+                    }
                 }
                 else if (turn === 'O') {
                     event.target.parentElement.classList.add("bWinnerO");
+                    for(let i = 0; i < board.length; i++ ){
+                        board[i] = boardO[i];
+                    }
+                }
+                if(boardNum === squareNum) {
+                    matchCheck = true;
                 }
             }
             if(checkForWinner(mainBoard)) {
@@ -191,6 +226,9 @@ function handleClick(event) {
             if(checkForTie(board)) {
                 mainBoard[boardNum] = 'T';
                 event.target.parentElement.classList.add("bWinnerT");
+                for(let i = 0; i < board.length; i++ ) {
+                        board[i] = boardT[i];
+                }
             }
             if(checkForTie(mainBoard)) {
                 tie = true;
@@ -198,12 +236,6 @@ function handleClick(event) {
             switchPlayerTurn();
         }
     } 
-    
-    // console.log(boardNum);
-    // console.log(squareNum);
-    // console.log(sqNum);
-    // console.log(board);
-    // console.log(mainBoard);
 
     render();
 }
@@ -231,9 +263,8 @@ function determineBoard(board) {
 }
 
 function placePiece(board, index) {    
-    
     board[index] = turn;
-    
+
     if(mainBoard[index] !== 'X' && mainBoard[index] !== 'O' && mainBoard[index] !== 'T') {
         mainBoard[index] = 'A';
         bPos = index;
