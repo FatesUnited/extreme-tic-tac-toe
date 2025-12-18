@@ -234,7 +234,7 @@ function placePiece(board, index) {
     
     board[index] = turn;
     
-    if(mainBoard[index] !== 'X' && mainBoard[index] !== 'O' && mainBoard[index] !== 'T' && !checkForWinner(board)) {
+    if(mainBoard[index] !== 'X' && mainBoard[index] !== 'O' && mainBoard[index] !== 'T') {
         mainBoard[index] = 'A';
         bPos = index;
     }
