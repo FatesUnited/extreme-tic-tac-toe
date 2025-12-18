@@ -317,7 +317,6 @@ function switchPlayerTurn() {
     }
 }
 
-
 /*----------------------------- Event Listeners -----------------------------*/
 const squareIndex = boardEls.forEach(board => {
     board.addEventListener('click', handleClick);

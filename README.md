@@ -1,5 +1,7 @@
 # Ultimate Tic-Tac-Toe
 
+![Ultimate Tic-Tac-Toe](./images/uttt.png)
+
 Ultimate Tic-Tac-Toe is a two-player strategy game played on a 3×3 grid of smaller Tic-Tac-Toe boards. Players take turns placing Xs and Os, with each move determining where the next player must play.
 
 This project is a browser-based implementation built using HTML, CSS, and JavaScript.
